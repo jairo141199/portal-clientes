@@ -1,65 +1,147 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { signIn } from "next-auth/react";
+import { ArrowRight, User } from "lucide-react";
+import { BackgroundCurves } from "@/components/ui/BackgroundCurves";
+import { Button } from "@/components/ui/Button";
+import { PasswordField } from "@/components/ui/PasswordField";
+import { TextField } from "@/components/ui/TextField";
+import { validateEmail, validatePassword } from "@/lib/validators";
+
+interface FormErrors {
+  email?: string;
+  password?: string;
+}
+
+export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const nextErrors: FormErrors = {
+      email: validateEmail(email),
+      password: validatePassword(password),
+    };
+    setErrors(nextErrors);
+    if (nextErrors.email || nextErrors.password) return;
+
+    setLoading(true);
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    setLoading(false);
+
+    if (result?.error) {
+      setErrors({ password: "Correo o contraseña incorrectos." });
+      return;
+    }
+
+    router.push("/dashboard");
+    router.refresh();
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-[#F5F5F5] px-4 py-16 dark:bg-[#0B0B0D]">
+      <BackgroundCurves />
+
+      <motion.h1
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative z-10 mb-8 text-center text-4xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl"
+      >
+        Portal de Clientes
+      </motion.h1>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+        className="relative z-10 w-full max-w-[520px] rounded-2xl bg-white p-8 shadow-[0_8px_40px_rgba(0,0,0,0.08)] dark:bg-zinc-900 dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)] sm:p-10"
+      >
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">¡Bienvenido!</h2>
+          <p className="mt-2 text-[15px] text-gray-500 dark:text-gray-400">
+            Inicia sesión para acceder a tu información.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        <form onSubmit={handleSubmit} noValidate className="space-y-7">
+          <TextField
+            icon={User}
+            type="email"
+            placeholder="Correo electrónico"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            error={errors.email}
+          />
+
+          <div>
+            <PasswordField
+              placeholder="Contraseña"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              error={errors.password}
             />
-            Deploy Now
-          </a>
+            <div className="mt-3 text-right">
+              <a
+                href="#"
+                className="text-sm font-medium text-[#0A1F44] transition-colors hover:underline dark:text-blue-400"
+              >
+                ¿Olvidaste tu contraseña?
+              </a>
+            </div>
+          </div>
+
+          <Button type="submit" loading={loading} className="mt-2">
+            <span className="flex items-center gap-2">
+              Iniciar sesión
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </Button>
+        </form>
+
+        <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+          ¿No tienes cuenta?{" "}
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            className="font-medium text-[#0A1F44] transition-colors hover:underline dark:text-blue-400"
           >
-            Documentation
+            Crear una cuenta
           </a>
-        </div>
-      </main>
+        </p>
+      </motion.div>
+
+      <motion.footer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="relative z-10 mt-10 flex items-center gap-3 text-sm text-gray-500 dark:text-gray-500"
+      >
+        <a href="#" className="transition-colors hover:text-gray-700 dark:hover:text-gray-300">
+          Ayuda
+        </a>
+        <span className="text-gray-300 dark:text-gray-700">•</span>
+        <a href="#" className="transition-colors hover:text-gray-700 dark:hover:text-gray-300">
+          Seguridad
+        </a>
+        <span className="text-gray-300 dark:text-gray-700">•</span>
+        <a href="#" className="transition-colors hover:text-gray-700 dark:hover:text-gray-300">
+          Política de privacidad
+        </a>
+      </motion.footer>
     </div>
   );
 }
