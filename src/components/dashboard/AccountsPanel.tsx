@@ -10,7 +10,7 @@ interface Account {
   balance: string;
 }
 
-const ACCOUNTS: Account[] = [{ name: "Cuenta de Ahorros", number: "Ahorros 314 - 778215 - 09", balance: "USD 3.500.000.000,00" }];
+const ACCOUNTS: Account[] = [{ name: "Cuenta de Ahorros", number: "Ahorros 314 - 778215 - 09", balance: "USD 3.500.000,00" }];
 
 export function AccountsPanel() {
   const [expanded, setExpanded] = useState(true);
