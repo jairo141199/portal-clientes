@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { CreditCard, Printer, Sprout, Wallet } from "lucide-react";
+import { CreditCard, Printer, Wallet } from "lucide-react";
 import clsx from "clsx";
 import {
   CARDS_AND_LOANS_TOTAL,
   CASH_AND_SAVINGS_TOTAL,
   CHECKING_ACCOUNTS,
-  INVESTMENTS_TOTAL,
   LOAN_ACCOUNTS,
   SAVINGS_ACCOUNTS,
   formatCurrency,
@@ -79,35 +78,27 @@ export function AccountsSidebar() {
           </div>
         </div>
 
-        <div>
-          <div className="mb-3 flex items-center gap-2 text-[13px] font-semibold tracking-wide text-gray-700 dark:text-gray-300">
-            <CreditCard className="h-4 w-4" />
-            CARDS &amp; LOANS
-            <span className="ml-auto font-normal text-gray-500 dark:text-gray-400">
-              {formatCurrency(CARDS_AND_LOANS_TOTAL)}
-            </span>
+        {LOAN_ACCOUNTS.length > 0 && (
+          <div>
+            <div className="mb-3 flex items-center gap-2 text-[13px] font-semibold tracking-wide text-gray-700 dark:text-gray-300">
+              <CreditCard className="h-4 w-4" />
+              CARDS &amp; LOANS
+              <span className="ml-auto font-normal text-gray-500 dark:text-gray-400">
+                {formatCurrency(CARDS_AND_LOANS_TOTAL)}
+              </span>
+            </div>
+            <div className="space-y-1">
+              {LOAN_ACCOUNTS.map((account) => (
+                <div key={account.id} className="px-3 py-2">
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {account.name} {account.number}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{formatCurrency(account.balance)}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="space-y-1">
-            {LOAN_ACCOUNTS.map((account) => (
-              <div key={account.id} className="px-3 py-2">
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {account.name} {account.number}
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{formatCurrency(account.balance)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <div className="mb-3 flex items-center gap-2 text-[13px] font-semibold tracking-wide text-gray-700 dark:text-gray-300">
-            <Sprout className="h-4 w-4" />
-            INVESTMENTS
-            <span className="ml-auto font-normal text-gray-500 dark:text-gray-400">
-              {formatCurrency(INVESTMENTS_TOTAL)}
-            </span>
-          </div>
-        </div>
+        )}
       </div>
 
       <button className="mt-8 w-full rounded-full bg-[#3B0764] px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90">
