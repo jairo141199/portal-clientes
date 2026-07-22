@@ -39,6 +39,6 @@ export interface ActivityRow {
 }
 
 export const CHECKING_ACTIVITY: ActivityRow[] = [
-  { type: "balance", date: "Jul 22, 2026", balanceAfter: 4_800_000 },
-  { type: "transaction", date: "07/22/2026", description: "Incoming Wire Transfer - Funds Held", amount: 4_800_000 },
+  { type: "balance", date: "Jul 3, 2026", balanceAfter: 4_800_000 },
+  { type: "transaction", date: "07/03/2026", description: "Incoming Wire Transfer - Funds Held", amount: 4_800_000 },
 ];
