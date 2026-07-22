@@ -16,7 +16,7 @@ export function Button({ children, loading, className, disabled, ...props }: But
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
       disabled={disabled || loading}
       className={clsx(
-        "flex h-[52px] w-full items-center justify-center rounded-full bg-[#0B2545] text-[15px] font-medium text-white shadow-md shadow-[#0B2545]/20 transition-shadow duration-200 hover:shadow-lg hover:shadow-[#0B2545]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#B08D2B] dark:text-[#0B2545] dark:shadow-[#B08D2B]/20 dark:hover:shadow-[#B08D2B]/30",
+        "flex h-[52px] w-full items-center justify-center rounded-full bg-[#3B0764] text-[15px] font-medium text-white shadow-md shadow-[#3B0764]/20 transition-shadow duration-200 hover:shadow-lg hover:shadow-[#3B0764]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-[#3B0764] dark:shadow-white/10 dark:hover:shadow-white/20",
         className,
       )}
       {...props}

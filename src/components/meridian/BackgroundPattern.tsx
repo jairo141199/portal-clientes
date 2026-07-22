@@ -8,7 +8,7 @@ export function BackgroundPattern() {
         preserveAspectRatio="xMidYMid slice"
       >
         {/* Top-right globe/meridian motif */}
-        <g stroke="#0B2545" strokeWidth="1" fill="none">
+        <g stroke="#3B0764" strokeWidth="1" fill="none">
           <circle cx="1180" cy="60" r="260" />
           <ellipse cx="1180" cy="60" rx="90" ry="260" />
           <ellipse cx="1180" cy="60" rx="180" ry="260" />
@@ -16,7 +16,7 @@ export function BackgroundPattern() {
         </g>
 
         {/* Bottom-left echo, smaller */}
-        <g stroke="#B08D2B" strokeWidth="1" fill="none" opacity="0.8">
+        <g stroke="#7C3AED" strokeWidth="1" fill="none" opacity="0.8">
           <circle cx="120" cy="860" r="180" />
           <ellipse cx="120" cy="860" rx="60" ry="180" />
           <ellipse cx="120" cy="860" rx="120" ry="180" />

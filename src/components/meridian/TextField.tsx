@@ -20,7 +20,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <Icon
             className={clsx(
               "h-5 w-5 shrink-0 transition-colors duration-200",
-              focused ? "text-[#B08D2B] dark:text-[#D4AF6A]" : "text-gray-400 dark:text-gray-500",
+              focused ? "text-[#3B0764] dark:text-white" : "text-gray-400 dark:text-gray-500",
             )}
           />
           <input
@@ -45,7 +45,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <motion.div
             className={clsx(
               "absolute inset-y-0 left-0 h-px",
-              error ? "bg-red-500" : "bg-[#B08D2B] dark:bg-[#D4AF6A]",
+              error ? "bg-red-500" : "bg-[#3B0764] dark:bg-white",
             )}
             initial={false}
             animate={{ width: focused || error ? "100%" : "0%" }}

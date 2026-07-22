@@ -7,9 +7,9 @@ export default async function MeridianDashboardPage() {
   const firstName = session?.user?.name?.split(" ")[0] ?? "there";
 
   return (
-    <div className="flex min-h-screen flex-1 items-center justify-center bg-[#F7F8FA] px-4 dark:bg-[#071627]">
-      <div className="w-full max-w-[440px] rounded-2xl bg-white p-10 text-center shadow-[0_8px_40px_rgba(0,0,0,0.08)] dark:bg-[#0E2038] dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
-        <span className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#0B2545] text-white dark:bg-[#B08D2B] dark:text-[#0B2545]">
+    <div className="flex min-h-screen flex-1 items-center justify-center bg-white px-4 dark:bg-[#1A0B2E]">
+      <div className="w-full max-w-[440px] rounded-2xl border border-purple-100 bg-white p-10 text-center shadow-[0_8px_40px_rgba(59,7,100,0.08)] dark:border-transparent dark:bg-[#2A1440] dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
+        <span className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#3B0764] text-white dark:bg-white dark:text-[#3B0764]">
           <Landmark className="h-6 w-6" />
         </span>
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">

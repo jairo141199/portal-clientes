@@ -51,7 +51,7 @@ export default function MeridianLoginPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-[#F7F8FA] px-4 py-16 dark:bg-[#071627]">
+    <div className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-white px-4 py-16 dark:bg-[#1A0B2E]">
       <BackgroundPattern />
 
       <motion.div
@@ -60,7 +60,7 @@ export default function MeridianLoginPage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative z-10 mb-8 flex items-center gap-3"
       >
-        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#0B2545] text-white dark:bg-[#B08D2B] dark:text-[#0B2545]">
+        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#3B0764] text-white dark:bg-white dark:text-[#3B0764]">
           <Landmark className="h-5 w-5" />
         </span>
         <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
@@ -72,7 +72,7 @@ export default function MeridianLoginPage() {
         initial={{ opacity: 0, y: 24, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-[440px] rounded-2xl bg-white p-8 shadow-[0_8px_40px_rgba(0,0,0,0.08)] dark:bg-[#0E2038] dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)] sm:p-10"
+        className="relative z-10 w-full max-w-[440px] rounded-2xl border border-purple-100 bg-white p-8 shadow-[0_8px_40px_rgba(59,7,100,0.08)] dark:border-transparent dark:bg-[#2A1440] dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)] sm:p-10"
       >
         <div className="mb-8 text-center">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">Welcome back</h2>
@@ -103,7 +103,7 @@ export default function MeridianLoginPage() {
             <div className="mt-3 text-right">
               <a
                 href="#"
-                className="text-sm font-medium text-[#0B2545] transition-colors hover:underline dark:text-[#D4AF6A]"
+                className="text-sm font-medium text-[#3B0764] transition-colors hover:underline dark:text-white"
               >
                 Forgot your password?
               </a>
@@ -122,7 +122,7 @@ export default function MeridianLoginPage() {
           New to Meridian Trust?{" "}
           <a
             href="#"
-            className="font-medium text-[#0B2545] transition-colors hover:underline dark:text-[#D4AF6A]"
+            className="font-medium text-[#3B0764] transition-colors hover:underline dark:text-white"
           >
             Create an account
           </a>
