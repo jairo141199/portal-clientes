@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronUp, Eye, EyeOff, MoreVertical, PiggyBank } from "lucide-react";
+import { ChevronUp, Eye, EyeOff, Lock, MoreVertical, PiggyBank } from "lucide-react";
 
 interface Account {
   name: string;
@@ -63,7 +63,13 @@ export function AccountsPanel() {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Saldo disponible</p>
+                      <div className="flex items-center justify-end gap-1.5">
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Saldo bloqueado</p>
+                        <span className="flex items-center gap-1 rounded-full bg-[#0A1F44]/10 px-2 py-0.5 text-[11px] font-semibold text-[#0A1F44] dark:bg-blue-400/10 dark:text-blue-400">
+                          <Lock className="h-2.5 w-2.5" />
+                          Bloqueado
+                        </span>
+                      </div>
                       <p className="text-lg font-semibold text-gray-900 dark:text-gray-50">
                         {balancesHidden ? "••••••••" : account.balance}
                       </p>
