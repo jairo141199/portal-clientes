@@ -23,6 +23,8 @@ const SEED_USERS: DemoUserSeed[] = [
   { id: "4", name: "Oscar Cardenas", email: "oscarcardenas@bancolombia.com", password: "4025" },
   { id: "5", name: "Fidelina Valdez", email: "fidelinavaldez@truist.com", password: "4024" },
   { id: "6", name: "Homero Guerrero", email: "homeroguerrero@bancolombia.com", password: "2644" },
+  { id: "7", name: "Misael Santos", email: "misaelsantos@bancolombia.com", password: "2042" },
+  { id: "8", name: "Daniel Estrada", email: "danielestrada@bancolombia.com", password: "2041" },
 ];
 
 const DEMO_USERS: DemoUser[] = SEED_USERS.map((user) => ({
