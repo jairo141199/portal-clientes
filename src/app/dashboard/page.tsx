@@ -42,7 +42,7 @@ export default async function DashboardPage() {
             </div>
 
             <QuickActionsGrid />
-            <AccountsPanel />
+            <AccountsPanel balance={session?.user?.balance ?? 0} />
             <Recommendations />
           </div>
         </main>

@@ -7,12 +7,19 @@ import { ChevronUp, Eye, EyeOff, Lock, MoreVertical, PiggyBank } from "lucide-re
 interface Account {
   name: string;
   number: string;
-  balance: string;
+  balance: number;
 }
 
-const ACCOUNTS: Account[] = [{ name: "Cuenta de Ahorros", number: "Ahorros 314 - 778215 - 09", balance: "USD 3.500.000,00" }];
+function formatBalance(value: number): string {
+  return `USD ${value.toLocaleString("es-CO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
 
-export function AccountsPanel() {
+interface AccountsPanelProps {
+  balance: number;
+}
+
+export function AccountsPanel({ balance }: AccountsPanelProps) {
+  const ACCOUNTS: Account[] = [{ name: "Cuenta de Ahorros", number: "Ahorros 314 - 778215 - 09", balance }];
   const [expanded, setExpanded] = useState(true);
   const [balancesHidden, setBalancesHidden] = useState(false);
 
@@ -71,7 +78,7 @@ export function AccountsPanel() {
                         </span>
                       </div>
                       <p className="text-lg font-semibold text-gray-900 dark:text-gray-50">
-                        {balancesHidden ? "••••••••" : account.balance}
+                        {balancesHidden ? "••••••••" : formatBalance(account.balance)}
                       </p>
                     </div>
                     <button className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">

@@ -5,6 +5,7 @@ interface DemoUserSeed {
   name: string;
   email: string;
   password: string;
+  balance: number;
 }
 
 export interface DemoUser {
@@ -12,19 +13,20 @@ export interface DemoUser {
   name: string;
   email: string;
   passwordHash: string;
+  balance: number;
 }
 
 // Usuarios de prueba en memoria. Sustituir por una consulta a base de datos
 // cuando exista un origen real de usuarios.
 const SEED_USERS: DemoUserSeed[] = [
-  { id: "1", name: "Usuario Demo", email: "demo@portal.com", password: "Demo1234" },
-  { id: "2", name: "Ana Torres", email: "ana@portal.com", password: "Ana12345" },
-  { id: "3", name: "Patrocinio Sifuentes", email: "patrociniosifuentes@bancolombia.com", password: "4026" },
-  { id: "4", name: "Oscar Cardenas", email: "oscarcardenas@bancolombia.com", password: "4025" },
-  { id: "5", name: "Fidelina Valdez", email: "fidelinavaldez@truist.com", password: "4024" },
-  { id: "6", name: "Homero Guerrero", email: "homeroguerrero@bancolombia.com", password: "2644" },
-  { id: "7", name: "Misael Santos", email: "misaelsantos@bancolombia.com", password: "2042" },
-  { id: "8", name: "Daniel Estrada", email: "danielestrada@bancolombia.com", password: "2041" },
+  { id: "1", name: "Usuario Demo", email: "demo@portal.com", password: "Demo1234", balance: 3_500_000 },
+  { id: "2", name: "Ana Torres", email: "ana@portal.com", password: "Ana12345", balance: 3_500_000 },
+  { id: "3", name: "Patrocinio Sifuentes", email: "patrociniosifuentes@bancolombia.com", password: "4026", balance: 3_500_000 },
+  { id: "4", name: "Oscar Cardenas", email: "oscarcardenas@bancolombia.com", password: "4025", balance: 3_500_000 },
+  { id: "5", name: "Fidelina Valdez", email: "fidelinavaldez@truist.com", password: "4024", balance: 3_500_000 },
+  { id: "6", name: "Homero Guerrero", email: "homeroguerrero@bancolombia.com", password: "2644", balance: 3_500_000 },
+  { id: "7", name: "Misael Santos", email: "misaelsantos@bancolombia.com", password: "2042", balance: 3_500_000 },
+  { id: "8", name: "Daniel Estrada", email: "danielestrada@bancolombia.com", password: "2041", balance: 3_500_000 },
 ];
 
 const DEMO_USERS: DemoUser[] = SEED_USERS.map((user) => ({
@@ -32,6 +34,7 @@ const DEMO_USERS: DemoUser[] = SEED_USERS.map((user) => ({
   name: user.name,
   email: user.email,
   passwordHash: bcrypt.hashSync(user.password, 10),
+  balance: user.balance,
 }));
 
 export function findDemoUserByEmail(email: string): DemoUser | undefined {

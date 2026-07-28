@@ -25,8 +25,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const isValid = await bcrypt.compare(password, user.passwordHash);
         if (!isValid) return null;
 
-        return { id: user.id, name: user.name, email: user.email };
+        return { id: user.id, name: user.name, email: user.email, balance: user.balance };
       },
     }),
   ],
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.balance = user.balance;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      if (session.user) {
+        session.user.balance = token.balance as number | undefined;
+      }
+      return session;
+    },
+  },
 });
