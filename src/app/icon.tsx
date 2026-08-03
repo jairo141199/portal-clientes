@@ -20,8 +20,8 @@ export default function Icon() {
         }}
       >
         <div style={{ width: 11, height: 4, borderRadius: 2, background: "#FACC15" }} />
-        <div style={{ width: 15, height: 4, borderRadius: 2, background: "#F97316" }} />
-        <div style={{ width: 18, height: 4, borderRadius: 2, background: "#8B5CF6" }} />
+        <div style={{ width: 15, height: 4, borderRadius: 2, background: "#3B82F6" }} />
+        <div style={{ width: 18, height: 4, borderRadius: 2, background: "#EF4444" }} />
       </div>
     ),
     { ...size },
