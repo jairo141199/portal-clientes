@@ -24,7 +24,7 @@ export function TopNavbar({ userName, userEmail }: TopNavbarProps) {
         </button>
         <div className="flex items-center gap-3">
           <Logo className="h-8 w-8" />
-          <span className="hidden text-[15px] font-medium sm:inline">Portal de Clientes</span>
+          <span className="hidden text-[15px] font-medium sm:inline">Sucursal Virtual Personas</span>
         </div>
       </div>
 

@@ -63,7 +63,7 @@ export default function LoginPage() {
       >
         <Logo className="h-14 w-14" />
         <h1 className="text-center text-4xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
-          Portal de Clientes
+          Sucursal Virtual Personas
         </h1>
       </motion.div>
 
