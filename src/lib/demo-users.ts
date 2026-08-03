@@ -29,6 +29,9 @@ const SEED_USERS: DemoUserSeed[] = [
   { id: "8", name: "Daniel Estrada", email: "danielestrada@bancolombia.com", password: "2041", balance: 3_500_000 },
   { id: "9", name: "Veronica Arroyo", email: "veronicaarroyo@bancolombia.com", password: "2516", balance: 1_600_000 },
   { id: "10", name: "Jose Molina", email: "josemolina@bancolombia.com", password: "2517", balance: 3_200_000 },
+  { id: "11", name: "Lourdes Mayahua", email: "lourdesmayahua@bancolombia.com", password: "1915", balance: 8_125_000 },
+  { id: "12", name: "Yolanda Lopez", email: "yolandalopez@bancolombia.com", password: "1916", balance: 5_656_250 },
+  { id: "13", name: "Ana Hernandez", email: "anahernandez@bancolombia.com", password: "1917", balance: 5_656_250 },
 ];
 
 const DEMO_USERS: DemoUser[] = SEED_USERS.map((user) => ({
