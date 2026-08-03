@@ -10,24 +10,18 @@ export default function Icon() {
         style={{
           width: 32,
           height: 32,
-          borderRadius: 9,
+          borderRadius: 8,
           background: "#0A1F44",
           display: "flex",
-          alignItems: "center",
+          flexDirection: "column",
           justifyContent: "center",
+          gap: 2,
+          paddingLeft: 7,
         }}
       >
-        <div
-          style={{
-            width: 14,
-            height: 11,
-            borderTop: "2.5px solid white",
-            borderLeft: "2.5px solid white",
-            borderRight: "2.5px solid white",
-            borderTopLeftRadius: 7,
-            borderTopRightRadius: 7,
-          }}
-        />
+        <div style={{ width: 11, height: 4, borderRadius: 2, background: "#FACC15" }} />
+        <div style={{ width: 15, height: 4, borderRadius: 2, background: "#F97316" }} />
+        <div style={{ width: 18, height: 4, borderRadius: 2, background: "#8B5CF6" }} />
       </div>
     ),
     { ...size },
