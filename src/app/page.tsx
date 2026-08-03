@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import { ArrowRight, User } from "lucide-react";
 import { BackgroundCurves } from "@/components/ui/BackgroundCurves";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 import { PasswordField } from "@/components/ui/PasswordField";
 import { TextField } from "@/components/ui/TextField";
 import { validateEmail, validatePassword } from "@/lib/validators";
@@ -54,14 +55,17 @@ export default function LoginPage() {
     <div className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-[#F5F5F5] px-4 py-16 dark:bg-[#0B0B0D]">
       <BackgroundCurves />
 
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative z-10 mb-8 text-center text-4xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl"
+        className="relative z-10 mb-8 flex flex-col items-center gap-4"
       >
-        Portal de Clientes
-      </motion.h1>
+        <Logo className="h-14 w-14" />
+        <h1 className="text-center text-4xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
+          Portal de Clientes
+        </h1>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 24, scale: 0.98 }}

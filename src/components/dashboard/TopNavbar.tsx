@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, HelpCircle, LogOut, Menu, Search } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
 
 interface TopNavbarProps {
   userName: string;
@@ -22,9 +23,7 @@ export function TopNavbar({ userName, userEmail }: TopNavbarProps) {
           <span className="hidden sm:inline">Menú</span>
         </button>
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#FACC15] via-[#F97316] to-[#8B5CF6] text-xs font-bold text-white">
-            PC
-          </div>
+          <Logo className="h-8 w-8" />
           <span className="hidden text-[15px] font-medium sm:inline">Portal de Clientes</span>
         </div>
       </div>
