@@ -5,18 +5,13 @@ export interface Account {
   balance: number;
 }
 
-export const CHECKING_ACCOUNTS: Account[] = [
-  { id: "checking-8909", name: "Checking", number: "8909", balance: 4_800_000 },
-];
+export function buildCheckingAccounts(balance: number): Account[] {
+  return [{ id: "checking-8909", name: "Checking", number: "8909", balance }];
+}
 
 export const SAVINGS_ACCOUNTS: Account[] = [];
 
 export const LOAN_ACCOUNTS: Account[] = [];
-
-export const CASH_AND_SAVINGS_TOTAL = [...CHECKING_ACCOUNTS, ...SAVINGS_ACCOUNTS].reduce(
-  (sum, account) => sum + account.balance,
-  0,
-);
 
 export const CARDS_AND_LOANS_TOTAL = LOAN_ACCOUNTS.reduce((sum, account) => sum + account.balance, 0);
 
@@ -38,7 +33,9 @@ export interface ActivityRow {
   balanceAfter?: number;
 }
 
-export const CHECKING_ACTIVITY: ActivityRow[] = [
-  { type: "balance", date: "Jul 3, 2026", balanceAfter: 4_800_000 },
-  { type: "transaction", date: "07/03/2026", description: "Incoming Wire Transfer - Funds Held", amount: 4_800_000 },
-];
+export function buildCheckingActivity(balance: number): ActivityRow[] {
+  return [
+    { type: "balance", date: "Jul 3, 2026", balanceAfter: balance },
+    { type: "transaction", date: "07/03/2026", description: "Incoming Wire Transfer - Funds Held", amount: balance },
+  ];
+}

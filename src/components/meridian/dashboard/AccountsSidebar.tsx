@@ -5,15 +5,22 @@ import { CreditCard, Printer, Wallet } from "lucide-react";
 import clsx from "clsx";
 import {
   CARDS_AND_LOANS_TOTAL,
-  CASH_AND_SAVINGS_TOTAL,
-  CHECKING_ACCOUNTS,
   LOAN_ACCOUNTS,
   SAVINGS_ACCOUNTS,
   formatCurrency,
+  type Account,
 } from "@/lib/meridian-accounts";
 
-export function AccountsSidebar() {
+interface AccountsSidebarProps {
+  accounts: Account[];
+}
+
+export function AccountsSidebar({ accounts }: AccountsSidebarProps) {
   const [tab, setTab] = useState<"personal" | "business">("personal");
+  const cashAndSavingsTotal = [...accounts, ...SAVINGS_ACCOUNTS].reduce(
+    (sum, account) => sum + account.balance,
+    0,
+  );
 
   return (
     <aside className="w-full shrink-0 border-r border-purple-100 bg-white p-6 dark:border-white/10 dark:bg-[#1A0B2E] lg:w-[280px]">
@@ -53,11 +60,11 @@ export function AccountsSidebar() {
             <Wallet className="h-4 w-4" />
             CASH &amp; SAVINGS
             <span className="ml-auto font-normal text-gray-500 dark:text-gray-400">
-              {formatCurrency(CASH_AND_SAVINGS_TOTAL)}
+              {formatCurrency(cashAndSavingsTotal)}
             </span>
           </div>
           <div className="space-y-1">
-            {CHECKING_ACCOUNTS.map((account) => (
+            {accounts.map((account) => (
               <div key={account.id} className="rounded-lg bg-purple-50 px-3 py-2 dark:bg-white/10">
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
                   {account.name} {account.number}
