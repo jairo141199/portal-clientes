@@ -1,5 +1,7 @@
+import { redirect } from "next/navigation";
 import { MapPin, Pencil } from "lucide-react";
 import { auth } from "@/auth";
+import { findDemoUserByEmail } from "@/lib/demo-users";
 import { TopNavbar } from "@/components/dashboard/TopNavbar";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { QuickActionsGrid } from "@/components/dashboard/QuickActionsGrid";
@@ -8,6 +10,11 @@ import { Recommendations } from "@/components/dashboard/Recommendations";
 
 export default async function DashboardPage() {
   const session = await auth();
+
+  if (session?.user?.email && !findDemoUserByEmail(session.user.email)) {
+    redirect("/");
+  }
+
   const firstName = session?.user?.name?.split(" ")[0] ?? "usuario";
 
   const today = new Intl.DateTimeFormat("es-CO", {
