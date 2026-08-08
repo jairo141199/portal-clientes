@@ -25,7 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const isValid = await bcrypt.compare(password, user.passwordHash);
         if (!isValid) return null;
 
-        return { id: user.id, name: user.name, email: user.email, balance: user.balance };
+        return { id: user.id, name: user.name, email: user.email, balance: user.balance, role: user.role };
       },
     }),
   ],
@@ -33,12 +33,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     jwt({ token, user }) {
       if (user) {
         token.balance = user.balance;
+        token.role = user.role;
       }
       return token;
     },
     session({ session, token }) {
       if (session.user) {
         session.user.balance = token.balance as number | undefined;
+        session.user.role = token.role as "admin" | "user" | undefined;
       }
       return session;
     },

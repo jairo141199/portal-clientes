@@ -1,4 +1,7 @@
 import bcrypt from "bcryptjs";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 interface DemoUserSeed {
   id: string;
@@ -6,6 +9,7 @@ interface DemoUserSeed {
   email: string;
   password: string;
   balance: number;
+  role?: "admin" | "user";
 }
 
 export interface DemoUser {
@@ -14,10 +18,43 @@ export interface DemoUser {
   email: string;
   passwordHash: string;
   balance: number;
+  role: "admin" | "user";
 }
 
-// Usuarios de prueba en memoria. Sustituir por una consulta a base de datos
-// cuando exista un origen real de usuarios.
+const STORAGE_PATH = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "data",
+  "demo-users.json",
+);
+
+function ensureStoragePath() {
+  const dir = path.dirname(STORAGE_PATH);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function writeUsersToDisk(users: DemoUser[]) {
+  ensureStoragePath();
+  fs.writeFileSync(STORAGE_PATH, JSON.stringify(users, null, 2), "utf8");
+}
+
+function loadUsersFromDisk(): DemoUser[] {
+  try {
+    if (!fs.existsSync(STORAGE_PATH)) {
+      return [];
+    }
+    const raw = fs.readFileSync(STORAGE_PATH, "utf8");
+    const data = JSON.parse(raw) as DemoUser[];
+    return data;
+  } catch {
+    return [];
+  }
+}
+
+// Usuarios de prueba. Se persisten localmente en `data/demo-users.json`.
 const SEED_USERS: DemoUserSeed[] = [
   { id: "1", name: "Usuario Demo", email: "demo@portal.com", password: "Demo1234", balance: 3_500_000 },
   { id: "2", name: "Ana Torres", email: "ana@portal.com", password: "Ana12345", balance: 3_500_000 },
@@ -33,16 +70,85 @@ const SEED_USERS: DemoUserSeed[] = [
   { id: "12", name: "Yolanda Lopez", email: "yolandalopez@bancolombia.com", password: "1916", balance: 5_656_250 },
   { id: "13", name: "Ana Hernandez", email: "anahernandez@bancolombia.com", password: "1917", balance: 5_656_250 },
   { id: "14", name: "Luis Ortega", email: "luisortega@meridiantrust.com", password: "1018", balance: 1_342_721 },
+  { id: "15", name: "Cliente Portal", email: "cliente@portal.com", password: "Cliente123", balance: 2_000_000 },
+  { id: "16", name: "Administrador", email: "jesusnavas@admin.com", password: "1015", balance: 0, role: "admin" },
 ];
 
-const DEMO_USERS: DemoUser[] = SEED_USERS.map((user) => ({
-  id: user.id,
-  name: user.name,
-  email: user.email,
-  passwordHash: bcrypt.hashSync(user.password, 10),
-  balance: user.balance,
-}));
+function buildDemoUsers(users: DemoUserSeed[]): DemoUser[] {
+  return users.map((user) => ({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    passwordHash: bcrypt.hashSync(user.password, 10),
+    balance: user.balance,
+    role: user.role ?? "user",
+  }));
+}
+
+function getUsers(): DemoUser[] {
+  const existing = loadUsersFromDisk();
+  if (existing.length > 0) {
+    return existing;
+  }
+
+  const seeded = buildDemoUsers(SEED_USERS);
+  writeUsersToDisk(seeded);
+  return seeded;
+}
+
+export type PublicDemoUser = Omit<DemoUser, "passwordHash">;
+
+function generateDemoUserId() {
+  return `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+}
+
+export function getAllDemoUsers(): PublicDemoUser[] {
+  return getUsers().map((user) => {
+    const { passwordHash, ...publicUser } = user;
+    void passwordHash;
+    return publicUser;
+  });
+}
+
+export function addDemoUser(data: {
+  name: string;
+  email: string;
+  password: string;
+  balance: number;
+}): PublicDemoUser | null {
+  const users = getUsers();
+  const emailExists = users.some(
+    (user) => user.email.toLowerCase() === data.email.toLowerCase(),
+  );
+  if (emailExists) return null;
+
+  const newUser: DemoUser = {
+    id: generateDemoUserId(),
+    name: data.name,
+    email: data.email,
+    passwordHash: bcrypt.hashSync(data.password, 10),
+    balance: data.balance,
+    role: "user",
+  };
+
+  users.push(newUser);
+  writeUsersToDisk(users);
+
+  const { passwordHash, ...user } = newUser;
+  void passwordHash;
+  return user;
+}
+
+export function deleteDemoUserById(id: string): boolean {
+  const users = getUsers();
+  const index = users.findIndex((user) => user.id === id);
+  if (index === -1) return false;
+
+  users.splice(index, 1);
+  writeUsersToDisk(users);
+  return true;
+}
 
 export function findDemoUserByEmail(email: string): DemoUser | undefined {
-  return DEMO_USERS.find((user) => user.email.toLowerCase() === email.toLowerCase());
+  return getUsers().find((user) => user.email.toLowerCase() === email.toLowerCase());
 }

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "2",
+    "name": "Ana Torres",
+    "email": "ana@portal.com",
+    "passwordHash": "$2b$10$Rlt5mJVGy69Po81l62Qt.eInsb2Omp267xtiJXAdo35nBpJKkMgea",
+    "balance": 3500000,
+    "role": "user"
+  },
+  {
+    "id": "3",
+    "name": "Patrocinio Sifuentes",
+    "email": "patrociniosifuentes@bancolombia.com",
+    "passwordHash": "$2b$10$5120kL44EuKRewMsOz8gPehUS.gRWsrc7spzkAxK1PDE5wI1SriJC",
+    "balance": 3500000,
+    "role": "user"
+  },
+  {
+    "id": "4",
+    "name": "Oscar Cardenas",
+    "email": "oscarcardenas@bancolombia.com",
+    "passwordHash": "$2b$10$40AHMMddRMA36NvmVgCFbO2hBrn3CB3CGQiPTtXHsb5XwvNqSR98m",
+    "balance": 3500000,
+    "role": "user"
+  },
+  {
+    "id": "7",
+    "name": "Misael Santos",
+    "email": "misaelsantos@bancolombia.com",
+    "passwordHash": "$2b$10$S7r8QTu5LZOmHOGpuhKxRuTZriRYm4mjehjIMPhICUiLH9TKvGA4C",
+    "balance": 3500000,
+    "role": "user"
+  },
+  {
+    "id": "9",
+    "name": "Veronica Arroyo",
+    "email": "veronicaarroyo@bancolombia.com",
+    "passwordHash": "$2b$10$gmMl3XSyHt.hemV/hGlo4OC5c5c8mvdWIcf0SkxwvZ2HDbREBeL7G",
+    "balance": 1600000,
+    "role": "user"
+  },
+  {
+    "id": "10",
+    "name": "Jose Molina",
+    "email": "josemolina@bancolombia.com",
+    "passwordHash": "$2b$10$Ynxq507tdfNGaEdtx04ej.m1FO884UUbQl9eE66AUb6d4fym83Cuu",
+    "balance": 3200000,
+    "role": "user"
+  },
+  {
+    "id": "11",
+    "name": "Lourdes Mayahua",
+    "email": "lourdesmayahua@bancolombia.com",
+    "passwordHash": "$2b$10$bm/KpDU0mVzZy5N5b.YYfeEAqDqHhr4.FN9//mqjV/Cc5g7W1/iwu",
+    "balance": 8125000,
+    "role": "user"
+  },
+  {
+    "id": "12",
+    "name": "Yolanda Lopez",
+    "email": "yolandalopez@bancolombia.com",
+    "passwordHash": "$2b$10$ibab8Q.DcQtGP5lXGQht0uolY9SwWiTy6887OcQZdThfx9hylleuu",
+    "balance": 5656250,
+    "role": "user"
+  },
+  {
+    "id": "13",
+    "name": "Ana Hernandez",
+    "email": "anahernandez@bancolombia.com",
+    "passwordHash": "$2b$10$FGxrXnhAdKfLtlhj7DT1m.NVZJPtxge/8C1YBKgG9LqitwND9.aVW",
+    "balance": 5656250,
+    "role": "user"
+  },
+  {
+    "id": "14",
+    "name": "Luis Ortega",
+    "email": "luisortega@meridiantrust.com",
+    "passwordHash": "$2b$10$rWmqu9fRLBm0nuyQp7AnHuWboedNPFoxGy8yLeOXQdOl8DvBctRL6",
+    "balance": 1342721,
+    "role": "user"
+  },
+  {
+    "id": "15",
+    "name": "Cliente Portal",
+    "email": "cliente@portal.com",
+    "passwordHash": "$2b$10$Zr7YagF/wUg55ysl94r6LO2Oyt.c.5w.cAEHnXINn2nGngrCUCKsq",
+    "balance": 2000000,
+    "role": "user"
+  },
+  {
+    "id": "16",
+    "name": "Administrador",
+    "email": "jesusnavas@admin.com",
+    "passwordHash": "$2b$10$6XgWJOc/6p.Tvj.lL/ZW2uY/5uOdYccH/mhPZewMEwRVF1PgRpnfe",
+    "balance": 0,
+    "role": "admin"
+  },
+  {
+    "id": "1786203771827-7124",
+    "name": "GLORIA BUENO",
+    "email": "11gloriabueno",
+    "passwordHash": "$2b$10$msO7hv9nnPOmM7.S7YGw9elhqiHTv5lBwl7HojaBhRUj.SdTacw4e",
+    "balance": 1609000,
+    "role": "user"
+  },
+  {
+    "id": "1786203771898-3262",
+    "name": "MARIO GUTIERREZ",
+    "email": "12mariogutierrez",
+    "passwordHash": "$2b$10$XMeyGpCMjqgsrlD4UZ/.0uqcguy/BamRE3xiKbFYW3HBl4N4B2gbq",
+    "balance": 1609000,
+    "role": "user"
+  }
+]

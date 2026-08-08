@@ -30,6 +30,7 @@ export default async function DashboardPage() {
         <main className="min-w-0 flex-1 px-5 py-8 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-5xl space-y-10">
             <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
                 <h1 className="text-3xl font-semibold capitalize text-gray-900 dark:text-gray-50">
                   Hola, {firstName}
@@ -38,7 +39,17 @@ export default async function DashboardPage() {
                   <Pencil className="h-4 w-4" />
                 </button>
               </div>
-              <p className="text-sm capitalize text-gray-500 dark:text-gray-400">{today}</p>
+
+              {session?.user?.role === "admin" ? (
+                <a
+                  href="/dashboard/users"
+                  className="inline-flex items-center justify-center rounded-full bg-[#0A1F44] px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#081833] dark:bg-blue-500 dark:hover:bg-blue-600"
+                >
+                  Administrar usuarios
+                </a>
+              ) : null}
+            </div>
+            <p className="text-sm capitalize text-gray-500 dark:text-gray-400">{today}</p>
             </div>
 
             <QuickActionsGrid />
