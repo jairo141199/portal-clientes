@@ -37,8 +37,13 @@ function ensureStoragePath() {
 }
 
 function writeUsersToDisk(users: DemoUser[]) {
-  ensureStoragePath();
-  fs.writeFileSync(STORAGE_PATH, JSON.stringify(users, null, 2), "utf8");
+  try {
+    ensureStoragePath();
+    fs.writeFileSync(STORAGE_PATH, JSON.stringify(users, null, 2), "utf8");
+  } catch {
+    // Read-only filesystem (e.g. Vercel's deployed serverless functions):
+    // changes only last for this request, they won't persist.
+  }
 }
 
 function loadUsersFromDisk(): DemoUser[] {
