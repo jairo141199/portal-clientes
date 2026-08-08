@@ -9,5 +9,6 @@ export default auth((req) => {
 });
 
 export const config = {
+  runtime: "nodejs",
   matcher: ["/dashboard/:path*", "/meridian/dashboard/:path*"],
 };
