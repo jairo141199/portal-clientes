@@ -1,8 +1,5 @@
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export function validateEmail(value: string): string | undefined {
-  if (!value.trim()) return "Ingresa tu correo electrónico.";
-  if (!EMAIL_REGEX.test(value)) return "Ingresa un correo electrónico válido.";
+export function validateUsername(value: string): string | undefined {
+  if (!value.trim()) return "Ingresa tu usuario.";
   return undefined;
 }
 

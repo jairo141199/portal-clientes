@@ -10,16 +10,16 @@ import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { PasswordField } from "@/components/ui/PasswordField";
 import { TextField } from "@/components/ui/TextField";
-import { validateEmail, validatePassword } from "@/lib/validators";
+import { validateUsername, validatePassword } from "@/lib/validators";
 
 interface FormErrors {
-  email?: string;
+  username?: string;
   password?: string;
 }
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [loading, setLoading] = useState(false);
@@ -28,22 +28,22 @@ export default function LoginPage() {
     event.preventDefault();
 
     const nextErrors: FormErrors = {
-      email: validateEmail(email),
+      username: validateUsername(username),
       password: validatePassword(password),
     };
     setErrors(nextErrors);
-    if (nextErrors.email || nextErrors.password) return;
+    if (nextErrors.username || nextErrors.password) return;
 
     setLoading(true);
     const result = await signIn("credentials", {
-      email,
+      email: username,
       password,
       redirect: false,
     });
     setLoading(false);
 
     if (result?.error) {
-      setErrors({ password: "Correo o contraseña incorrectos." });
+      setErrors({ password: "Usuario o contraseña incorrectos." });
       return;
     }
 
@@ -63,7 +63,7 @@ export default function LoginPage() {
       >
         <Logo className="h-14 w-14" />
         <h1 className="text-center text-4xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
-          Sucursal Virtual Personas
+          Portal de Clientes
         </h1>
       </motion.div>
 
@@ -83,12 +83,12 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} noValidate className="space-y-7">
           <TextField
             icon={User}
-            type="email"
-            placeholder="Correo electrónico"
-            autoComplete="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            error={errors.email}
+            type="text"
+            placeholder="Usuario"
+            autoComplete="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            error={errors.username}
           />
 
           <div>

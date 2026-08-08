@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sucursal Virtual Personas | Iniciar sesión",
+  title: "Portal de Clientes | Iniciar sesión",
   description: "Inicia sesión para acceder a tu información.",
 };
 
