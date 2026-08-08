@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
 interface DemoUserSeed {
   id: string;
@@ -21,13 +20,7 @@ export interface DemoUser {
   role: "admin" | "user";
 }
 
-const STORAGE_PATH = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "data",
-  "demo-users.json",
-);
+const STORAGE_PATH = path.join(process.cwd(), "data", "demo-users.json");
 
 function ensureStoragePath() {
   const dir = path.dirname(STORAGE_PATH);
