@@ -20,7 +20,7 @@ export default async function MeridianDashboardPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F5FA] dark:bg-[#12071F]">
-      <TopNav />
+      <TopNav userName={session?.user?.name ?? undefined} />
 
       <div className="flex flex-col lg:flex-row">
         <AccountsSidebar accounts={accounts} />

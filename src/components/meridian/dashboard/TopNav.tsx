@@ -5,7 +5,11 @@ import { Landmark, LogOut, MessageSquare, User } from "lucide-react";
 
 const NAV_LINKS = ["Home", "Accounts", "Transfer & pay", "Planning & tools", "Help & support"];
 
-export function TopNav() {
+interface TopNavProps {
+  userName?: string;
+}
+
+export function TopNav({ userName }: TopNavProps) {
   return (
     <header className="flex h-16 items-center justify-between gap-6 bg-[#3B0764] px-6 text-white">
       <div className="flex items-center gap-8">
@@ -34,10 +38,17 @@ export function TopNav() {
           <MessageSquare className="h-4 w-4" />
           Assist
         </a>
-        <a href="#" className="hidden items-center gap-2 text-white/80 transition-colors hover:text-white sm:flex">
-          <User className="h-4 w-4" />
-          Profile
-        </a>
+        {userName ? (
+          <span className="flex items-center gap-2 font-medium text-white">
+            <User className="h-4 w-4" />
+            {userName}
+          </span>
+        ) : (
+          <a href="#" className="hidden items-center gap-2 text-white/80 transition-colors hover:text-white sm:flex">
+            <User className="h-4 w-4" />
+            Profile
+          </a>
+        )}
         <button
           onClick={() => signOut({ callbackUrl: "/meridian" })}
           className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
