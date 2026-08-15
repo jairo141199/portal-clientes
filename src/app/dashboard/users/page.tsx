@@ -11,6 +11,7 @@ interface UserItem {
   name: string;
   email: string;
   balance: number;
+  pendingPayment?: number;
 }
 
 function formatCurrency(value: number) {
@@ -27,6 +28,7 @@ export default function UsersPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [balance, setBalance] = useState("2000000");
+  const [pendingPayment, setPendingPayment] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -49,6 +51,10 @@ export default function UsersPage() {
   }, []);
 
   const balanceNumber = useMemo(() => Number(balance.replace(/\D/g, "")) || 0, [balance]);
+  const pendingPaymentNumber = useMemo(
+    () => Number(pendingPayment.replace(/\D/g, "")) || 0,
+    [pendingPayment],
+  );
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -70,7 +76,13 @@ export default function UsersPage() {
     const response = await fetch("/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email: username, password, balance: balanceNumber }),
+      body: JSON.stringify({
+        name,
+        email: username,
+        password,
+        balance: balanceNumber,
+        ...(pendingPaymentNumber > 0 ? { pendingPayment: pendingPaymentNumber } : {}),
+      }),
     });
 
     setLoading(false);
@@ -87,6 +99,7 @@ export default function UsersPage() {
     setUsername("");
     setPassword("");
     setBalance("2000000");
+    setPendingPayment("");
   }
 
   async function handleDelete(id: string) {
@@ -153,7 +166,14 @@ export default function UsersPage() {
                     <div key={user.id} className="grid grid-cols-[1.4fr_1fr_1fr_0.6fr] gap-x-4 px-6 py-4 text-sm text-gray-700 dark:text-gray-200">
                       <span>{user.name}</span>
                       <span>{user.email}</span>
-                      <span>{formatCurrency(user.balance)}</span>
+                      <span>
+                        {formatCurrency(user.balance)}
+                        {user.pendingPayment ? (
+                          <span className="mt-0.5 block text-xs text-amber-600 dark:text-amber-400">
+                            Pendiente: {formatCurrency(user.pendingPayment)}
+                          </span>
+                        ) : null}
+                      </span>
                       <button
                         type="button"
                         onClick={() => handleDelete(user.id)}
@@ -202,6 +222,13 @@ export default function UsersPage() {
                   value={balance}
                   onChange={(event) => setBalance(event.target.value)}
                   error={errors.balance}
+                />
+                <TextField
+                  icon={Plus}
+                  type="text"
+                  placeholder="Pago pendiente (opcional)"
+                  value={pendingPayment}
+                  onChange={(event) => setPendingPayment(event.target.value)}
                 />
                 {submitError ? <p className="text-sm text-red-500">{submitError}</p> : null}
                 <Button type="submit" loading={loading}>

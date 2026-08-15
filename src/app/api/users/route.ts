@@ -21,13 +21,16 @@ export async function POST(request: Request) {
   if (forbidden) return forbidden;
 
   const body = await request.json();
-  const { name, email, password, balance } = body;
+  const { name, email, password, balance, pendingPayment } = body;
 
   if (!name || !email || !password || typeof balance !== "number") {
     return NextResponse.json({ error: "Datos inválidos." }, { status: 400 });
   }
+  if (pendingPayment !== undefined && typeof pendingPayment !== "number") {
+    return NextResponse.json({ error: "Pago pendiente inválido." }, { status: 400 });
+  }
 
-  const user = addDemoUser({ name, email, password, balance });
+  const user = addDemoUser({ name, email, password, balance, pendingPayment });
   if (!user) {
     return NextResponse.json({ error: "Ya existe un usuario con ese correo." }, { status: 409 });
   }

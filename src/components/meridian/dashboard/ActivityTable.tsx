@@ -7,9 +7,47 @@ import { formatCurrency, type ActivityRow } from "@/lib/meridian-accounts";
 
 interface ActivityTableProps {
   rows: ActivityRow[];
+  upcomingRows?: ActivityRow[];
 }
 
-export function ActivityTable({ rows }: ActivityTableProps) {
+function ActivityRows({ rows }: { rows: ActivityRow[] }) {
+  return (
+    <>
+      {rows.map((row, index) =>
+        row.type === "balance" ? (
+          <tr key={index} className="bg-purple-50/60 dark:bg-white/5">
+            <td className="py-2.5 pl-3 text-gray-500 dark:text-gray-400">{row.date}</td>
+            <td colSpan={2} className="py-2.5 pr-3 text-right text-gray-500 dark:text-gray-400">
+              Posted Balance: {formatCurrency(row.balanceAfter ?? 0)}
+            </td>
+          </tr>
+        ) : (
+          <tr key={index} className="border-b border-gray-50 last:border-0 dark:border-white/5">
+            <td className="py-3 pl-3 text-gray-600 dark:text-gray-300">{row.date}</td>
+            <td className="py-3 text-gray-900 dark:text-gray-100">{row.description}</td>
+            <td className="py-3 pr-3 text-right">
+              <div className="flex items-center justify-end gap-3">
+                <span
+                  className={
+                    (row.amount ?? 0) < 0
+                      ? "text-gray-900 dark:text-gray-100"
+                      : "text-emerald-600 dark:text-emerald-400"
+                  }
+                >
+                  {(row.amount ?? 0) < 0 ? "-" : "+"}
+                  {formatCurrency(Math.abs(row.amount ?? 0))}
+                </span>
+                <ChevronRight className="h-4 w-4 text-gray-300" />
+              </div>
+            </td>
+          </tr>
+        ),
+      )}
+    </>
+  );
+}
+
+export function ActivityTable({ rows, upcomingRows = [] }: ActivityTableProps) {
   const [tab, setTab] = useState<"recent" | "upcoming">("recent");
 
   return (
@@ -63,36 +101,20 @@ export function ActivityTable({ rows }: ActivityTableProps) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, index) =>
-              row.type === "balance" ? (
-                <tr key={index} className="bg-purple-50/60 dark:bg-white/5">
-                  <td className="py-2.5 pl-3 text-gray-500 dark:text-gray-400">{row.date}</td>
-                  <td colSpan={2} className="py-2.5 pr-3 text-right text-gray-500 dark:text-gray-400">
-                    Posted Balance: {formatCurrency(row.balanceAfter ?? 0)}
-                  </td>
-                </tr>
-              ) : (
-                <tr key={index} className="border-b border-gray-50 last:border-0 dark:border-white/5">
-                  <td className="py-3 pl-3 text-gray-600 dark:text-gray-300">{row.date}</td>
-                  <td className="py-3 text-gray-900 dark:text-gray-100">{row.description}</td>
-                  <td className="py-3 pr-3 text-right">
-                    <div className="flex items-center justify-end gap-3">
-                      <span
-                        className={
-                          (row.amount ?? 0) < 0
-                            ? "text-gray-900 dark:text-gray-100"
-                            : "text-emerald-600 dark:text-emerald-400"
-                        }
-                      >
-                        {(row.amount ?? 0) < 0 ? "-" : "+"}
-                        {formatCurrency(Math.abs(row.amount ?? 0))}
-                      </span>
-                      <ChevronRight className="h-4 w-4 text-gray-300" />
-                    </div>
-                  </td>
-                </tr>
-              ),
-            )}
+            <ActivityRows rows={rows} />
+          </tbody>
+        </table>
+      ) : upcomingRows.length > 0 ? (
+        <table className="mt-4 w-full text-left text-sm">
+          <thead>
+            <tr className="text-gray-500 dark:text-gray-400">
+              <th className="pb-3 font-normal">Date</th>
+              <th className="pb-3 font-normal">Description</th>
+              <th className="pb-3 text-right font-normal">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ActivityRows rows={upcomingRows} />
           </tbody>
         </table>
       ) : (

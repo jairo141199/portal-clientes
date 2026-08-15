@@ -18,6 +18,7 @@ export interface DemoUser {
   passwordHash: string;
   balance: number;
   role: "admin" | "user";
+  pendingPayment?: number;
 }
 
 const STORAGE_PATH = path.join(process.cwd(), "data", "demo-users.json");
@@ -113,6 +114,7 @@ export function addDemoUser(data: {
   email: string;
   password: string;
   balance: number;
+  pendingPayment?: number;
 }): PublicDemoUser | null {
   const users = getUsers();
   const emailExists = users.some(
@@ -127,6 +129,7 @@ export function addDemoUser(data: {
     passwordHash: bcrypt.hashSync(data.password, 10),
     balance: data.balance,
     role: "user",
+    ...(data.pendingPayment ? { pendingPayment: data.pendingPayment } : {}),
   };
 
   users.push(newUser);

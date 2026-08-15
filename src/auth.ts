@@ -25,7 +25,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const isValid = await bcrypt.compare(password, user.passwordHash);
         if (!isValid) return null;
 
-        return { id: user.id, name: user.name, email: user.email, balance: user.balance, role: user.role };
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          balance: user.balance,
+          role: user.role,
+          pendingPayment: user.pendingPayment,
+        };
       },
     }),
   ],
@@ -34,6 +41,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.balance = user.balance;
         token.role = user.role;
+        token.pendingPayment = user.pendingPayment;
       }
       return token;
     },
@@ -41,6 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         session.user.balance = token.balance as number | undefined;
         session.user.role = token.role as "admin" | "user" | undefined;
+        session.user.pendingPayment = token.pendingPayment as number | undefined;
       }
       return session;
     },

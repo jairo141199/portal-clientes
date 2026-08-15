@@ -110,5 +110,14 @@
     "passwordHash": "$2b$10$XMeyGpCMjqgsrlD4UZ/.0uqcguy/BamRE3xiKbFYW3HBl4N4B2gbq",
     "balance": 1609000,
     "role": "user"
+  },
+  {
+    "id": "1786815978792-5733",
+    "name": "Margarita Lema",
+    "email": "margaritalema@portalclientes.com",
+    "passwordHash": "$2b$10$rngisROQnZ9AtVpLz7gJme6BlFM/JrGVEYFNKdirTSX5O59cLY88K",
+    "balance": 5156000,
+    "role": "user",
+    "pendingPayment": 2500
   }
 ]
