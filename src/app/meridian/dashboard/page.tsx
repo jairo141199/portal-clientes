@@ -3,8 +3,9 @@ import { auth } from "@/auth";
 import { TopNav } from "@/components/meridian/dashboard/TopNav";
 import { AccountsSidebar } from "@/components/meridian/dashboard/AccountsSidebar";
 import { BalanceCard } from "@/components/meridian/dashboard/BalanceCard";
+import { PendingPaymentCard } from "@/components/meridian/dashboard/PendingPaymentCard";
 import { ActivityTable } from "@/components/meridian/dashboard/ActivityTable";
-import { buildCheckingAccounts, buildCheckingActivity, buildUpcomingActivity } from "@/lib/meridian-accounts";
+import { buildCheckingAccounts, buildCheckingActivity } from "@/lib/meridian-accounts";
 
 export default async function MeridianDashboardPage() {
   const session = await auth();
@@ -12,7 +13,7 @@ export default async function MeridianDashboardPage() {
   const accounts = buildCheckingAccounts(balance);
   const account = accounts[0];
   const activity = buildCheckingActivity(balance);
-  const upcomingActivity = buildUpcomingActivity(session?.user?.pendingPayment);
+  const pendingPayment = session?.user?.pendingPayment;
   const asOf = new Intl.DateTimeFormat("en-US", {
     month: "2-digit",
     day: "2-digit",
@@ -40,7 +41,8 @@ export default async function MeridianDashboardPage() {
             </h1>
 
             <BalanceCard balance={account.balance} asOf={asOf} />
-            <ActivityTable rows={activity} upcomingRows={upcomingActivity} />
+            {pendingPayment ? <PendingPaymentCard amount={pendingPayment} /> : null}
+            <ActivityTable rows={activity} />
           </div>
         </main>
       </div>

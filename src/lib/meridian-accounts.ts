@@ -39,10 +39,3 @@ export function buildCheckingActivity(balance: number): ActivityRow[] {
     { type: "transaction", date: "07/03/2026", description: "Incoming Wire Transfer - Funds Held", amount: balance },
   ];
 }
-
-export function buildUpcomingActivity(pendingPayment?: number): ActivityRow[] {
-  if (!pendingPayment) return [];
-  return [
-    { type: "transaction", date: "Pending", description: "Pending Payment", amount: -pendingPayment },
-  ];
-}
