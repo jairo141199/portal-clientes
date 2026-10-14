@@ -89,11 +89,11 @@
   },
   {
     "id": "16",
-    "name": "Administrador",
-    "email": "jesusnavas@admin.com",
+    "name": "JAIME CANALES",
+    "email": "jaime2026",
     "passwordHash": "$2b$10$6XgWJOc/6p.Tvj.lL/ZW2uY/5uOdYccH/mhPZewMEwRVF1PgRpnfe",
-    "balance": 1500025,
-    "role": "admin"
+    "balance": 753769,
+    "role": "user"
   },
   {
     "id": "1786203771827-7124",
