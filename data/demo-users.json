@@ -1,10 +1,10 @@
 [
   {
     "id": "2",
-    "name": "Ana Torres",
-    "email": "ana@portal.com",
-    "passwordHash": "$2b$10$Rlt5mJVGy69Po81l62Qt.eInsb2Omp267xtiJXAdo35nBpJKkMgea",
-    "balance": 3500000,
+    "name": "MARIA CASTILLO",
+    "email": "ec650407@bancolombia.com",
+    "passwordHash": "$2b$10$VScFdPj0wxxEt0xDrviDkOUphaC4HWDHJU.kmVEr9/NqvrAMhkpnG",
+    "balance": 6915284,
     "role": "user"
   },
   {
