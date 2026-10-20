@@ -25,10 +25,10 @@
   },
   {
     "id": "7",
-    "name": "Misael Santos",
-    "email": "misaelsantos@bancolombia.com",
-    "passwordHash": "$2b$10$S7r8QTu5LZOmHOGpuhKxRuTZriRYm4mjehjIMPhICUiLH9TKvGA4C",
-    "balance": 3500000,
+    "name": "Antonio López",
+    "email": "Antoniolopez@bancolombia.com",
+    "passwordHash": "$2b$10$VScFdPj0wxxEt0xDrviDkOUphaC4HWDHJU.kmVEr9/NqvrAMhkpnG",
+    "balance": 817000,
     "role": "user"
   },
   {
