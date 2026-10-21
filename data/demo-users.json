@@ -33,10 +33,10 @@
   },
   {
     "id": "9",
-    "name": "Veronica Arroyo",
-    "email": "veronicaarroyo@bancolombia.com",
-    "passwordHash": "$2b$10$gmMl3XSyHt.hemV/hGlo4OC5c5c8mvdWIcf0SkxwvZ2HDbREBeL7G",
-    "balance": 1600000,
+    "name": "Anna dominguez",
+    "email": "annadominguez@bancolombia.com",
+    "passwordHash": "$2b$10$VScFdPj0wxxEt0xDrviDkOUphaC4HWDHJU.kmVEr9/NqvrAMhkpnG",
+    "balance": 4123429,
     "role": "user"
   },
   {
