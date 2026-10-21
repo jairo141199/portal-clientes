@@ -35,7 +35,7 @@
     "id": "9",
     "name": "Anna dominguez",
     "email": "annadominguez@bancolombia.com",
-    "passwordHash": "$2b$10$VScFdPj0wxxEt0xDrviDkOUphaC4HWDHJU.kmVEr9/NqvrAMhkpnG",
+    "passwordHash": "$2b$10$2G5GRaiEMxnh9zIi0DtvCO6ur.FXhnXIyOHBVSmPue13QHtlLEbt2",
     "balance": 4123429,
     "role": "user"
   },
