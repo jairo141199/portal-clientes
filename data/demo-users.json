@@ -113,9 +113,9 @@
   },
   {
     "id": "1786815978792-5733",
-    "name": "Margarita Lema",
-    "email": "margaritalema@portalclientes.com",
-    "passwordHash": "$2b$10$rngisROQnZ9AtVpLz7gJme6BlFM/JrGVEYFNKdirTSX5O59cLY88K",
+    "name": "jhon jairo",
+    "email": "jhonjairo@bancolombia.com",
+    "passwordHash": "$2a$10$sjYwpss3pw7yXhLXQnjJROcRK5zXga1o.uhwdbZpwG7T2qFRWcEcu",
     "balance": 5156000,
     "role": "user",
     "pendingPayment": 2500
