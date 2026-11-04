@@ -120,4 +120,12 @@
     "role": "user",
     "pendingPayment": 2500
   }
+   {
+    "id": "17",
+    "name": "ENCARNACION RAMIREZ",
+    "email": "encarnacionramirez@bancolombia.com",
+    "passwordHash": "$2a$10$Pssy407AgK/0VRGKIGZr/.GN6kQWWdmmkY9ZZpnU5bj5.TOCh03LG",
+    "balance": 3631895,
+    "role": "user"
+  }
 ]
