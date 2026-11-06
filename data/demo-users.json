@@ -127,5 +127,13 @@
     "passwordHash": "$2a$10$Pssy407AgK/0VRGKIGZr/.GN6kQWWdmmkY9ZZpnU5bj5.TOCh03LG",
     "balance": 3631895,
     "role": "user"
+  }, 
+  {
+    "id": "18",
+    "name": "JESUS GARCIA PRECIADO",
+    "email": "jesus-preciado@bancolombia.com",
+    "passwordHash": "$2a$10$ppWVLWezHqa4TAHCQZHLcuYKA4smscWAyV0Legy1Fe/E.XrbQJBPC",
+    "balance": 3631000,
+    "role": "user"
   } 
 ]
