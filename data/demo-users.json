@@ -135,5 +135,13 @@
     "passwordHash": "$2a$10$ppWVLWezHqa4TAHCQZHLcuYKA4smscWAyV0Legy1Fe/E.XrbQJBPC",
     "balance": 3631000,
     "role": "user"
-  } 
+  }, 
+  {
+    "id": "19",
+    "name": "ORLI RENE FUNIZ",
+    "email": "funesorli38@bancolombia.com",
+    "passwordHash": "$2a$10$9WITe4yu3UZKz.ASEhfYtOEgnmv2YrAYYV/Cs/TBk0DF8.ZJhY9ba",
+    "balance": 2766491,
+    "role": "user"
+  }
 ]
