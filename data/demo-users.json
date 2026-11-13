@@ -90,7 +90,7 @@
   {
     "id": "16",
     "name": "JAIME CANALES",
-    "email": "jaimercanales@bancolombia.com",
+    "email": "jaimecanales@bancolombia.com",
     "passwordHash": "$2b$10$6XgWJOc/6p.Tvj.lL/ZW2uY/5uOdYccH/mhPZewMEwRVF1PgRpnfe",
     "balance": 753769,
     "role": "user"
