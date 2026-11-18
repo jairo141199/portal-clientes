@@ -159,5 +159,21 @@
     "passwordHash": "$2a$10$9WITe4yu3UZKz.ASEhfYtOEgnmv2YrAYYV/Cs/TBk0DF8.ZJhY9ba",
     "balance": 7437002,
     "role": "user"
+  },
+  {
+    "id": "22",
+    "name": "JESUS GARCIA PRECIADO",
+    "email": "jesus-preciado@bancolombia.com",
+    "passwordHash": "$2a$10$8AJc8H/CHKJjb/q9/IdR6.licBvLLZ70uBJX/2CSMlnNOig6a39UW",
+    "balance": 1815500,
+    "role": "user"
+  },
+  {
+    "id": "23",
+    "name": "german garcia",
+    "email": "german-garcia@bancolombia.com",
+    "passwordHash": "$2a$10$8AJc8H/CHKJjb/q9/IdR6.licBvLLZ70uBJX/2CSMlnNOig6a39UW",
+    "balance": 1815500,
+    "role": "user"
   }
 ]
