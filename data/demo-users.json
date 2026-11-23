@@ -175,5 +175,13 @@
     "passwordHash": "$2a$10$io29iOeTFmm101jKmHh2GOKblDSvFnuQHgCX8WqVPeEoMrC8jXlxO",
     "balance": 1815500,
     "role": "user"
+  },
+  {
+    "id": "25",
+    "name": "RIGOBERTO VILLANUEVA",
+    "email": "rigobertovillanueva09@bancolombia.com",
+    "passwordHash": "$2a$10$h94Ff0YVZ7TKDAQ1OzJ7QevHvgBOTKs0DEOgah/prLPm5YJEtTsiO",
+    "balance": 5800000,
+    "role": "user"
   }
 ]
