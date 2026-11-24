@@ -183,5 +183,13 @@
     "passwordHash": "$2a$10$h94Ff0YVZ7TKDAQ1OzJ7QevHvgBOTKs0DEOgah/prLPm5YJEtTsiO",
     "balance": 5800000,
     "role": "user"
+  },
+  {
+    "id": "26",
+    "name": "ANUAR YOVANY PAZ",
+    "email": "yovanypaz655@bancolombia.com",
+    "passwordHash": "$2a$10$tmMosMOQOFX/BM/N.cxifucTG6kqLRxNJGfmf9.3lTPMCaE.LDGea",
+    "balance": 16142784,
+    "role": "user"
   }
 ]
